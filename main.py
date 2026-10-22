@@ -4,6 +4,14 @@ I did try like cheerio and puppeteer and a couple other combonations and I just 
 I blame Javascript since I was able to do this in python rather quickly ~20 minutes
 And that 20 minutes included testing everything and a full 5 minutes of api calls so I didnt accidentally DDOS pokeapi
 """
+
+"""
+Importantly this caches all data to a pokeJson/ and pokemon/ directory for jsons and images respectively.
+This should only be run once and then rely on the cached data
+Be kind to our API friends because with ai models crawling every corner of the web, true webscraping is dead
+It's insane the amount of hoops you have to jump through to scrape something like the Taco Bell Menu
+"""
+
 def importer():
     import requests as r
     import json
