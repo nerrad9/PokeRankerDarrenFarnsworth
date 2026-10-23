@@ -55,6 +55,7 @@ h1 {
     grid-template-rows: repeat(5, 1fr);
     gap: 10px;
 }
-.pokemon{
-    background-color: var(--white)
+.pokeButton{
+    background-color: var(--white);
+    text-transform: capitalize;
 }
