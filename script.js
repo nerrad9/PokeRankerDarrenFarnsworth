@@ -26,8 +26,45 @@ function getButtons(){
         matrix.appendChild(newB)
     }
 }
+function eloTies(entrants){
+    for(let a = 0; a < entrants.length-1; a++){
+        for(let b = a+1; b < entrants.length; b++){
+            const oldA = rankData[entrants[a]]
+            const oldB = rankData[entrants[b]]
+            const ea = 1/(1+(10**((oldB-oldA)/400)))
+            const eb = 1-ea
+            rankData[entrants[a]] = ~~(oldA+(40*(0.5-ea)))
+            rankData[entrants[b]] = ~~(oldB+(40*(0.5-eb)))
+        }
+    }
+}
+
+function eloUpdate(winners, losers){
+    for(let a = 0; a < winners.length; a++){
+        for(let b = 0; b < losers.length; b++){
+            const oldA = rankData[winners[a]]
+            const oldB = rankData[losers[b]]
+            const ea = 1/(1+(10**((oldB-oldA)/400)))
+            const eb = 1-ea
+            rankData[winners[a]] = ~~(oldA+40*(1-ea))
+            rankData[losers[b]] = ~~(oldB+40*(0-eb))
+        }
+    }
+}
+
 function doMath(){
-    console.log("Elo math goes here")
+    let winners = []
+    let losers = []
+    for (let i=1;i<26;i++){
+        const poke = document.getElementById("b"+String(i))
+        const pName = poke.innerText
+        if (!(pName in rankData)){rankData[pName] = 1500;}
+        if (poke.getAttribute("aria-pressed") === "true"){winners.push(pName)}
+        else{losers.push(pName)}
+    }
+    eloTies(winners)
+    eloTies(losers)
+    eloUpdate(winners, losers)
     clearButtons()
 }
 function clearButtons(){
