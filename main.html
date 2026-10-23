@@ -3,13 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>PokeRanker</title>
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>Hello</p>
-
+    <header><h1>PokeRanker</h1></header>
+    <main>
+        <article class = "Intro">
+            <section class = "introQuestion">
+            <h2 class = "questionTitle">What is PokeRanker?</h2>
+            <p class = "questionAnswer">
+                PokeRanker is a simple tool that allows you to sort through the now 1,025 Pokemon
+                and get a very quick ranking of your favorites.
+            </p>
+            </section>
+            <section class = "introQuestion">
+            <h2 class = "questionTitle">How do I use PokeRanker?</h2>
+            <p class = "questionAnswer">
+                PokeRanker will show you 25 Pokemon at once and all you have to do is 
+                select your favorites from the bunch!
+                At any time you can click the rankings button to see your current ranking.
+            </p>
+            </section>
+            <section class = "introQuestion">
+            <h2 class = "questionTitle">How does PokeRanker produce its rankings?</h2>
+            <p class = "questionAnswer">
+                PokeRanker uses a multiplayer implementation of the Elo System.
+                After you see a pokemon for the first time, it is given an Elo rating of 1500.
+                Then based on if you selected it or not, it is given a win, loss, or draw
+                comparing it to the other Pokemon listed.
+            </p>
+            </section>
+            <section class = "introQuestion">
+            <h2 class = "questionTitle">Why 25 Pokemon, why not 1v1 matchups?</h2>
+            <p class = "questionAnswer">
+                There are, as of the time of making, 1025 pokemon(frustratingly for clean powers of 2).
+                If PokeRanker were to use head to head matchups, it would take 513 comparisons
+                just to match every Pokemon once.  By using this group matchup method,  Pokeranker
+                expects to rank every Pokemon once within ~67 trials(not a joke, the math actually just actually ended up here).
+                PokeRanker also shows 10 Pokemon already ranked, that way new Pokemon have some actual Elos to rank against.
+            </p>
+            </section>
+        </article>
+        <section class = "ranker">
+            <div class = "pokeMatrix">
+                <button type = "button" id = "b1" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b2" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b3" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b4" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b5" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b6" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b7" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b8" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b9" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b10" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b11" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b12" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b13" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b14" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b15" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b16" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b17" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b18" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b19" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b20" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b21" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b22" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b23" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b24" aria-pressed = "false" class = "pokemon">Pokemon</button>
+                <button type = "button" id = "b25" aria-pressed = "false" class = "pokemon">Pokemon</button>
+            </div>
+            <div style = "display:flex; align-items:center">
+                <button type = "button">Submit</button>
+                <button type = "button">Rankings</button>
+            </div>
+        </section>
+    </main>
+    <footer><p>&#169 2026 Darren Farnsworth. All rights reserved</p></footer>
     <script src="script.js"></script>
 </body>
 </html>
