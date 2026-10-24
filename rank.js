@@ -98,4 +98,4 @@ getButtons()
 
 document.getElementById("next").addEventListener("click", doMath)
 document.getElementById("clear").addEventListener("click", () => {localStorage.setItem('rankData','{}');window.location.reload();})
-console.log(rankData)
+
