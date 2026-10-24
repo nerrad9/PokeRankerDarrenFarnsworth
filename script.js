@@ -9,10 +9,19 @@ let rankData = {}
 
 function getButtons(){
     const matrix = document.getElementById("pokeMatrix")
+    let used = []
     for (let i=1;i<26;i++){
         let newB = buttonTemplate.cloneNode(true)
         newB.id="b"+String(i)
-        let ran = ~~(Math.random()*pokeList.length)
+        let ran = 0
+        do{
+        if (i<11 && Object.keys(rankData).length !== 0){
+            let old = ~~(Math.random()*Object.keys(rankData).length)
+            ran = pokeList.indexOf(Object.keys(rankData)[old].toLowerCase())
+        }   
+        else{ran = ~~(Math.random()*pokeList.length)}
+        }while(used.includes(ran))
+        used.push(ran)
         newB.innerText = pokeList[ran].charAt(0).toUpperCase() + pokeList[ran].slice(1);
         let img = document.createElement("img")
         img.class="pokeImage";img.id="pokeImage";img.src=`./pokemon/${pokeList[ran]}.png`;img.alt=pokeList[ran];
@@ -31,10 +40,10 @@ function eloTies(entrants){
         for(let b = a+1; b < entrants.length; b++){
             const oldA = rankData[entrants[a]]
             const oldB = rankData[entrants[b]]
-            const ea = 1/(1+(10**((oldB-oldA)/400)))
+            const ea = 1/(1+(10**((oldB-oldA)/400)))//The 400 implies that a Pokemon rated 400 above its opponent has a 90% chance of winning
             const eb = 1-ea
-            rankData[entrants[a]] = ~~(oldA+(40*(0.5-ea)))
-            rankData[entrants[b]] = ~~(oldB+(40*(0.5-eb)))
+            rankData[entrants[a]] = ~~(oldA+(100*(0.5-ea)))//The 100 means the max a Pokemon can move off a win is 40 points. Since points for a win drop off hard after ~3000 elo and we expect to see most pokemon after ~70 trials. assuming we see each Pokemon in 1/4 of trials(very generous), 100 points per should allow an undefeated Pokemon to approach 3000 by end of program. Basically the points are made up and the score doesnt matter as long as good Pokemon>bad Pokemon.  Whatever score we put here just makes the shifts more volatile, which is good considering how many ties we get.
+            rankData[entrants[b]] = ~~(oldB+(100*(0.5-eb)))
         }
     }
 }
@@ -46,8 +55,8 @@ function eloUpdate(winners, losers){
             const oldB = rankData[losers[b]]
             const ea = 1/(1+(10**((oldB-oldA)/400)))
             const eb = 1-ea
-            rankData[winners[a]] = ~~(oldA+40*(1-ea))
-            rankData[losers[b]] = ~~(oldB+40*(0-eb))
+            rankData[winners[a]] = ~~(oldA+100*(1-ea))
+            rankData[losers[b]] = ~~(oldB+100*(0-eb))
         }
     }
 }
